@@ -12,31 +12,30 @@ public static void main(String [] args) {
 	
 	abrirBlocNotas();
 	
-	
+	if(archivo.isFile()){
+        System.out.println("El archivo hola.txt existe.");
+    }else{
+         System.out.println("El archivo hola.txt no existe.");
+    }
 }
 	
 public static void abrirBlocNotas() {
 		
 		ProcessBuilder pb = new ProcessBuilder("notepad");
+		
+		 Map<String, String> env = pb.environment();
+		
+		for (Map.Entry<String,String> entry : env.entrySet())
+            System.out.println("Key = " + entry.getKey() +
+                             ", Value = " + entry.getValue());;
+	    
 		pb.inheritIO();
 		Process proceso;
-		int contador = 0;
 		try {
 			
 			proceso = pb.start();
-			
-			
-			do {
-				
-				System.out.println("El bloc de notas está en ejecución.");
-				contador++;
-				Thread.sleep(5000);
-				
-			}while(proceso.isAlive());
-			
-			
-			System.out.println("El bloc de notas ha estado abierto " + contador * 5 + " segundos.");
-
+			proceso.waitFor(7, TimeUnit.SECONDS);
+			proceso.destroy();
 		} catch (IOException | InterruptedException e) {
 		
 			e.printStackTrace();
