@@ -1,0 +1,46 @@
+Microsoft Windows [Versi¢n 10.0.19043.1237]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+D:\Git-Hub\PSPRO\EjercicioEntradaSalida>dir
+ El volumen de la unidad D es Datos
+ El n£mero de serie del volumen es: 303D-2167
+
+ Directorio de D:\Git-Hub\PSPRO\EjercicioEntradaSalida
+
+01/10/2021  13:33    <DIR>          .
+01/10/2021  13:33    <DIR>          ..
+01/10/2021  13:33    <DIR>          .idea
+29/09/2021  12:44                26 comandos.txt
+01/10/2021  13:23               433 EjercicioEntradaSalida.iml
+01/10/2021  13:27    <DIR>          out
+01/10/2021  13:33                 0 resultado.txt
+01/10/2021  13:33    <DIR>          src
+               3 archivos            459 bytes
+               5 dirs  498.381.529.088 bytes libres
+
+D:\Git-Hub\PSPRO\EjercicioEntradaSalida>dir *.txt
+ El volumen de la unidad D es Datos
+ El n£mero de serie del volumen es: 303D-2167
+
+ Directorio de D:\Git-Hub\PSPRO\EjercicioEntradaSalida
+
+29/09/2021  12:44                26 comandos.txt
+01/10/2021  13:33                 0 resultado.txt
+               2 archivos             26 bytes
+               0 dirs  498.381.524.992 bytes libres
+
+D:\Git-Hub\PSPRO\EjercicioEntradaSalida>dir /a:d
+ El volumen de la unidad D es Datos
+ El n£mero de serie del volumen es: 303D-2167
+
+ Directorio de D:\Git-Hub\PSPRO\EjercicioEntradaSalida
+
+01/10/2021  13:33    <DIR>          .
+01/10/2021  13:33    <DIR>          ..
+01/10/2021  13:33    <DIR>          .idea
+01/10/2021  13:27    <DIR>          out
+01/10/2021  13:33    <DIR>          src
+               0 archivos              0 bytes
+               5 dirs  498.381.524.992 bytes libres
+
+D:\Git-Hub\PSPRO\EjercicioEntradaSalida>
