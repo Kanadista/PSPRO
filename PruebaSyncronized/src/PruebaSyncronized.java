@@ -5,6 +5,7 @@ public class PruebaSyncronized {
         Calculo c = new Calculo();
         Calculo c2 = new Calculo();
 
+
         Thread h1 = new Thread(new Hilo(c));
         Thread h2 = new Thread(new Hilo(c));
         Thread h3 = new Thread(new Hilo(c));
