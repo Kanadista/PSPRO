@@ -1,10 +1,14 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
 
     public static void main(String [] args){
 
+        Scanner teclado  = new Scanner(System.in);
+        ArrayList<Thread> arrayHilos = new ArrayList<>();
+        int milisegundos;
         ArrayList<Integer> vector1 = new ArrayList<Integer>();
         ArrayList<Integer> vector2 = new ArrayList<Integer>();
         ArrayList<Integer> vector3 = new ArrayList<Integer>();
@@ -47,47 +51,87 @@ public class Main {
         vector19 = Gestora.generarDatos(vector19);
         vector20 = Gestora.generarDatos(vector20);
 
-        Hilo hilo1 = new Hilo(vector1);
-        Hilo hilo2 = new Hilo(vector2);
-        Hilo hilo3 = new Hilo(vector3);
-        Hilo hilo4 = new Hilo(vector4);
-        Hilo hilo5 = new Hilo(vector5);
-        Hilo hilo6 = new Hilo(vector6);
-        Hilo hilo7 = new Hilo(vector7);
-        Hilo hilo8 = new Hilo(vector8);
-        Hilo hilo9 = new Hilo(vector9);
-        Hilo hilo10 = new Hilo(vector10);
-        Hilo hilo11 = new Hilo(vector11);
-        Hilo hilo12 = new Hilo(vector12);
-        Hilo hilo13 = new Hilo(vector13);
-        Hilo hilo14 = new Hilo(vector14);
-        Hilo hilo15 = new Hilo(vector15);
-        Hilo hilo16 = new Hilo(vector16);
-        Hilo hilo17 = new Hilo(vector17);
-        Hilo hilo18 = new Hilo(vector18);
-        Hilo hilo19 = new Hilo(vector19);
-        Hilo hilo20 = new Hilo(vector20);
+        Thread hilo1 = new Thread ( new Hilo(vector1));
+        Thread hilo2 = new Thread ( new Hilo(vector2));
+        Thread hilo3 = new Thread ( new Hilo(vector3));
+        Thread hilo4 = new Thread ( new Hilo(vector4));
+        Thread hilo5 = new Thread ( new Hilo(vector5));
+        Thread hilo6 = new Thread ( new Hilo(vector6));
+        Thread hilo7 = new Thread ( new Hilo(vector7));
+        Thread hilo8 = new Thread ( new Hilo(vector8));
+        Thread hilo9 = new Thread ( new Hilo(vector9));
+        Thread hilo10 = new Thread ( new Hilo(vector10));
+        Thread hilo11 = new Thread ( new Hilo(vector11));
+        Thread hilo12 = new Thread ( new Hilo(vector12));
+        Thread hilo13 = new Thread ( new Hilo(vector13));
+        Thread hilo14 = new Thread ( new Hilo(vector14));
+        Thread hilo15 = new Thread ( new Hilo(vector15));
+        Thread hilo16 = new Thread ( new Hilo(vector16));
+        Thread hilo17 = new Thread ( new Hilo(vector17));
+        Thread hilo18 = new Thread ( new Hilo(vector18));
+        Thread hilo19 = new Thread ( new Hilo(vector19));
+        Thread hilo20 = new Thread ( new Hilo(vector20));
 
-        hilo1.run();
-        hilo2.run();
-        hilo3.run();
-        hilo4.run();
-        hilo5.run();
-        hilo6.run();
-        hilo7.run();
-        hilo8.run();
-        hilo9.run();
-        hilo10.run();
-        hilo11.run();
-        hilo12.run();
-        hilo13.run();
-        hilo14.run();
-        hilo15.run();
-        hilo16.run();
-        hilo17.run();
-        hilo18.run();
-        hilo19.run();
-        hilo20.run();
+
+        System.out.println("Cuantos milisegundos deseas dar como margen a los calculos?: ");
+        milisegundos = teclado.nextInt();
+
+
+        try {
+
+            hilo1.start();
+            hilo2.start();
+            hilo3.start();
+            hilo4.start();
+            hilo5.start();
+            hilo6.start();
+            hilo7.start();
+            hilo8.start();
+            hilo9.start();
+            hilo10.start();
+            hilo11.start();
+            hilo12.start();
+            hilo13.start();
+            hilo14.start();
+            hilo15.start();
+            hilo16.start();
+            hilo17.start();
+            hilo18.start();
+            hilo19.start();
+            hilo20.start();
+
+            Thread.sleep(milisegundos);
+
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if(hilo1.isAlive() && hilo2.isAlive() && hilo3.isAlive() && hilo4.isAlive() && hilo4.isAlive() && hilo5.isAlive() && hilo6.isAlive() && hilo7.isAlive() && hilo8.isAlive() && hilo9.isAlive() && hilo10.isAlive() && hilo11.isAlive() && hilo12.isAlive() && hilo13.isAlive() && hilo14.isAlive() && hilo15.isAlive() && hilo16.isAlive() && hilo17.isAlive() && hilo18.isAlive() && hilo19.isAlive() && hilo20.isAlive()){
+
+            System.out.println("Tiempo máximo excedido. Se han cancelado los calculos.");
+
+            hilo1.interrupt();
+            hilo2.interrupt();
+            hilo3.interrupt();
+            hilo4.interrupt();
+            hilo5.interrupt();
+            hilo6.interrupt();
+            hilo7.interrupt();
+            hilo8.interrupt();
+            hilo9.interrupt();
+            hilo10.interrupt();
+            hilo11.interrupt();
+            hilo12.interrupt();
+            hilo13.interrupt();
+            hilo14.interrupt();
+            hilo15.interrupt();
+            hilo16.interrupt();
+            hilo17.interrupt();
+            hilo18.interrupt();
+            hilo19.interrupt();
+            hilo20.interrupt();
+        }
 
     }
 }

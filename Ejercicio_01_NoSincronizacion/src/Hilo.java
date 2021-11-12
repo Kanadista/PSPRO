@@ -4,6 +4,9 @@ import java.util.ArrayList;
 public class Hilo implements Runnable {
 
     private ArrayList<Integer> array;
+    private float resultadoMedia;
+    private int resultadoMaximo;
+    private int resultadoMinimo;
 
     public Hilo(ArrayList<Integer> array){
 
@@ -13,17 +16,19 @@ public class Hilo implements Runnable {
 
     public float calcularMedia(ArrayList<Integer> array){
 
-        float resultado;
+        float resultado = 0;
         int suma = 0;
 
-        for(int i = 0; i < array.size(); i++){
+        for(int i = 0; i < array.size() && !Thread.currentThread().isInterrupted(); i++){
 
             suma += array.get(i);
 
         }
 
-        resultado = suma / array.size();
+        if(!Thread.currentThread().isInterrupted()) {
+            resultado = suma / array.size();
 
+        }
         return resultado;
     }
 
@@ -32,7 +37,7 @@ public class Hilo implements Runnable {
         int maximo = 0;
         int foo;
 
-        for(int i = 0; i < array.size(); i++){
+        for(int i = 0; i < array.size() && !Thread.currentThread().isInterrupted(); i++){
 
             foo = array.get(i);
 
@@ -52,7 +57,7 @@ public class Hilo implements Runnable {
         int minimo = 0;
         int foo;
 
-        for(int i = 0; i < array.size(); i++){
+        for(int i = 0; i < array.size() && !Thread.currentThread().isInterrupted(); i++){
 
             foo = array.get(i);
 
@@ -71,7 +76,14 @@ public class Hilo implements Runnable {
     @Override
     public void run() {
 
-        System.out.println("Media: " + calcularMedia(array) + "Numero máximo: " + calcularMaximo(array) + "Numero mínimo: " + calcularMinimo(array));
 
+        resultadoMedia = calcularMedia(array);
+        resultadoMaximo = calcularMaximo(array);
+        resultadoMinimo = calcularMinimo(array);
+
+
+        if(!Thread.currentThread().isInterrupted()) {
+            System.out.println("Media: " + resultadoMedia + " || Numero máximo: " + resultadoMaximo + "|| Numero mínimo: " + resultadoMinimo);
+        }
     }
 }
