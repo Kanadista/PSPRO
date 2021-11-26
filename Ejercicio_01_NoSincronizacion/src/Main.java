@@ -7,6 +7,7 @@ public class Main {
     public static void main(String [] args){
 
         Scanner teclado  = new Scanner(System.in);
+        ArrayList<Integer> prioridades = new ArrayList<Integer>();
         ArrayList<Thread> arrayHilos = new ArrayList<>();
         int milisegundos;
         ArrayList<Integer> vector1 = new ArrayList<Integer>();
@@ -51,27 +52,26 @@ public class Main {
         vector19 = Gestora.generarDatos(vector19);
         vector20 = Gestora.generarDatos(vector20);
 
-        Thread hilo1 = new Thread ( new Hilo(vector1));
-        Thread hilo2 = new Thread ( new Hilo(vector2));
-        Thread hilo3 = new Thread ( new Hilo(vector3));
-        Thread hilo4 = new Thread ( new Hilo(vector4));
-        Thread hilo5 = new Thread ( new Hilo(vector5));
-        Thread hilo6 = new Thread ( new Hilo(vector6));
-        Thread hilo7 = new Thread ( new Hilo(vector7));
-        Thread hilo8 = new Thread ( new Hilo(vector8));
-        Thread hilo9 = new Thread ( new Hilo(vector9));
-        Thread hilo10 = new Thread ( new Hilo(vector10));
-        Thread hilo11 = new Thread ( new Hilo(vector11));
-        Thread hilo12 = new Thread ( new Hilo(vector12));
-        Thread hilo13 = new Thread ( new Hilo(vector13));
-        Thread hilo14 = new Thread ( new Hilo(vector14));
-        Thread hilo15 = new Thread ( new Hilo(vector15));
-        Thread hilo16 = new Thread ( new Hilo(vector16));
-        Thread hilo17 = new Thread ( new Hilo(vector17));
-        Thread hilo18 = new Thread ( new Hilo(vector18));
-        Thread hilo19 = new Thread ( new Hilo(vector19));
-        Thread hilo20 = new Thread ( new Hilo(vector20));
 
+        for(int i = 0; i < 6; i++){
+
+            prioridades.add(i);
+        }
+
+
+
+
+        for(int i = 0; i < 20; i++){
+
+            if(i < 10) {
+                Thread hilo = new Thread(new Hilo(vector1));
+                hilo.setPriority(Thread.MAX_PRIORITY);
+                arrayHilos.add(hilo);
+            }
+
+            Thread hilo = new Thread(new Hilo(vector1));
+            arrayHilos.add(hilo);
+        }
 
         System.out.println("Cuantos milisegundos deseas dar como margen a los calculos?: ");
         milisegundos = teclado.nextInt();
@@ -79,26 +79,11 @@ public class Main {
 
         try {
 
-            hilo1.start();
-            hilo2.start();
-            hilo3.start();
-            hilo4.start();
-            hilo5.start();
-            hilo6.start();
-            hilo7.start();
-            hilo8.start();
-            hilo9.start();
-            hilo10.start();
-            hilo11.start();
-            hilo12.start();
-            hilo13.start();
-            hilo14.start();
-            hilo15.start();
-            hilo16.start();
-            hilo17.start();
-            hilo18.start();
-            hilo19.start();
-            hilo20.start();
+            for (Thread hilo: arrayHilos) {
+
+                hilo.start();
+
+            }
 
             Thread.sleep(milisegundos);
 
@@ -107,30 +92,15 @@ public class Main {
             e.printStackTrace();
         }
 
-        if(hilo1.isAlive() && hilo2.isAlive() && hilo3.isAlive() && hilo4.isAlive() && hilo4.isAlive() && hilo5.isAlive() && hilo6.isAlive() && hilo7.isAlive() && hilo8.isAlive() && hilo9.isAlive() && hilo10.isAlive() && hilo11.isAlive() && hilo12.isAlive() && hilo13.isAlive() && hilo14.isAlive() && hilo15.isAlive() && hilo16.isAlive() && hilo17.isAlive() && hilo18.isAlive() && hilo19.isAlive() && hilo20.isAlive()){
+        for (Thread hilo: arrayHilos) {
 
-            System.out.println("Tiempo máximo excedido. Se han cancelado los calculos.");
+            if(hilo.isAlive()) {
 
-            hilo1.interrupt();
-            hilo2.interrupt();
-            hilo3.interrupt();
-            hilo4.interrupt();
-            hilo5.interrupt();
-            hilo6.interrupt();
-            hilo7.interrupt();
-            hilo8.interrupt();
-            hilo9.interrupt();
-            hilo10.interrupt();
-            hilo11.interrupt();
-            hilo12.interrupt();
-            hilo13.interrupt();
-            hilo14.interrupt();
-            hilo15.interrupt();
-            hilo16.interrupt();
-            hilo17.interrupt();
-            hilo18.interrupt();
-            hilo19.interrupt();
-            hilo20.interrupt();
+                System.out.println("Tiempo máximo excedido. Se han cancelado los calculos.");
+                hilo.interrupt();
+
+            }
+
         }
 
     }

@@ -11,13 +11,15 @@ public class Producto {
 
     }
 
-    public int getTipoProducto() {
-        return precioProducto;
-    }
+    public int getTipoProducto() { return tipoProducto; }
 
     public void setTipoProducto(int tipoProducto) {
         this.tipoProducto = tipoProducto;
     }
+
+    public int getCantidadProducto(){ return cantidadProducto;}
+
+    public void setCantidadProducto(int cantidadProducto) { this.cantidadProducto = cantidadProducto;}
 
     public int getPrecioProducto() {
         return precioProducto;

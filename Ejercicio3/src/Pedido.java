@@ -1,4 +1,5 @@
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,6 +13,12 @@ public class Pedido {
 
     public void setListaPedido(ArrayList<Producto> listaPedido) {
         this.listaPedido = listaPedido;
+    }
+
+    public Pedido(ArrayList<Producto> listaPedido){
+
+        this.listaPedido = listaPedido;
+
     }
 
     public void generarPedido(){
@@ -36,13 +43,13 @@ public class Pedido {
 
             case 3:
 
-                producto = new Producto(1,rng.nextInt(50) + 1 , rng.nextInt(15-1) + 1 + 1);
+                producto = new Producto(3,rng.nextInt(50) + 1 , rng.nextInt(15-1) + 1 + 1);
+
                 break;
 
         }
 
         listaPedido.add(producto);
-
 
     }
 }
