@@ -9,10 +9,6 @@ public class EncryptingManager {
 
     public void encryptFile(String algorithm, SecretKey key, File inputFile, File outputFile) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
 
-        switch (algorithm){
-
-            case "AES":
-
                 Cipher cipher = Cipher.getInstance(algorithm);
                 cipher.init(Cipher.ENCRYPT_MODE, key);
                 FileInputStream inputStream = new FileInputStream(inputFile);
@@ -31,17 +27,5 @@ public class EncryptingManager {
                 }
                 inputStream.close();
                 outputStream.close();
-
-                break;
-
-            case "DESede":
-
-
-                break;
-
-            case "DES":
-
-                break;
         }
     }
-}

@@ -28,7 +28,7 @@ public class CustomKeyGenerator {
 
         System.out.println("Elige el nombre que tendrá el fichero que contendrá la clave:  (Sin extensión)");
         file_name = answer.next();
-        file_name += ".raw";
+        file_name = new StringBuilder().append(file_name).append(".raw").toString();
 
         System.out.println("Elige el algoritmo a usar: || 1. AES  || 2. DES || 3. DESede ");
         chosen_algorithm = answer.nextInt();
@@ -36,9 +36,9 @@ public class CustomKeyGenerator {
         switch (chosen_algorithm){
             case 1: algorithm = "AES";
             break;
-            case 2: algorithm = "DESede";
+            case 2: algorithm = "DES";
             break;
-            case 3: algorithm = "DES";
+            case 3: algorithm = "DESede";
             break;
         }
 

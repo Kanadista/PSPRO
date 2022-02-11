@@ -5,17 +5,13 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 public class DecryptingManager {
-    public void encryptFile(String algorithm, SecretKey key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
-
-        switch (algorithm){
-
-            case "AES":
+    public void encryptFile(String algorithm, SecretKey key, File inputFile, File outputFile) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
 
                 Cipher cipher = Cipher.getInstance(algorithm);
                 cipher.init(Cipher.DECRYPT_MODE, key);
 
-                try (FileInputStream fis = new FileInputStream("juanjo_encriptado.txt");
-                     FileOutputStream fos = new FileOutputStream("juanjo_encriptado" + ".desencript");
+                try (FileInputStream fis = new FileInputStream(inputFile);
+                     FileOutputStream fos = new FileOutputStream(outputFile);
                      BufferedInputStream is = new BufferedInputStream(fis);
                      BufferedOutputStream os = new BufferedOutputStream(fos)) {
                     byte[] buff = new byte[cipher.getBlockSize()];
@@ -24,20 +20,5 @@ public class DecryptingManager {
                     }
                     os.write(cipher.doFinal());
                 }
-                /*
-                inputStream.close();
-                outputStream.close();
-*/
-                break;
-
-            case "DESede":
-
-
-                break;
-
-            case "DES":
-
-                break;
-        }
     }
 }
